@@ -31,3 +31,25 @@ spec:
   ports:
     - protocol: TCP
       port: 80
+      name: http
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: test
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: test-service
+                port:
+                  name: http
+
+
+      
