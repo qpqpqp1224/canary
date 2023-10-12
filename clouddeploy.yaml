@@ -2,7 +2,6 @@ apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: canary-test
-  serviceAccount: serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
 description: main application pipeline
 serialPipeline:
   stages:
