@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: test
-        image: asia-northeast3-docker.pkg.dev/trans-shuttle-401410/test/test_canary:1.0.0
+        image: asia-northeast3-docker.pkg.dev/trans-shuttle-401410/test/test_canary:2.0.0
 
 ---
 apiVersion: v1
