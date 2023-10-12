@@ -25,3 +25,5 @@ metadata:
 description: prod GKE cluster
 gke:
  cluster: projects/trans-shuttle-401410/locations/asia-northeast3/clusters/canary-test
+executionConfigs:
+- serviceAccount: serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
