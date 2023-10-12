@@ -2,6 +2,35 @@ apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: canary-test
+  apiVersion: deploy.cloud.google.com/v1
+kind: DeliveryPipeline
+metadata:
+  name: canary-test
+  serviceAccount: serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
+description: main application pipeline
+serialPipeline:
+  stages:
+  - targetId: prod
+    profiles: []
+    strategy:
+      canary:
+        runtimeConfig:
+          kubernetes:
+            serviceNetworking:
+              service: "test-service"
+              deployment: "test-deployment"
+        canaryDeployment:
+          percentages: [50]
+          verify: false
+---
+apiVersion: deploy.cloud.google.com/v1
+kind: Target
+metadata:
+  name: prod
+description: prod GKE cluster
+gke:
+  cluster: projects/trans-shuttle-401410/locations/asia-northeast3/clusters/canary-test
+
 description: main application pipeline
 serialPipeline:
   stages:
