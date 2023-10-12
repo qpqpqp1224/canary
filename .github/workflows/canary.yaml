@@ -40,4 +40,4 @@ jobs:
         run: gcloud deploy apply --file deployment/clouddeploy.yaml --region=asia-northeast3 --project=trans-shuttle-401410
      
       - name: deploy
-        run: gcloud deploy releases create test-release-001 --file=deployment/skaffold.yaml --project=trans-shuttle-401410 --region=asia-northeast3 --delivery-pipeline=canary-test
+        run: gcloud deploy releases create test-release-001 --config=deployment/skaffold.yaml --project=trans-shuttle-401410 --region=asia-northeast3 --delivery-pipeline=canary-test
