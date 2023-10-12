@@ -21,7 +21,7 @@ jobs:
         with:
           token_format: 'access_token'
           workload_identity_provider: projects/400645327499/locations/global/workloadIdentityPools/gitaction/providers/gitaction
-          service_account: '400645327499-compute@developer.gserviceaccount.com'
+          service_account: 'serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
           audience: 'https://github.com/qpqpqp1224/canary'      
       
       - name: Set up Cloud SDK
