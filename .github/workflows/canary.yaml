@@ -1,1 +1,40 @@
+name: Deploy
 
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+   canary:
+    permissions:
+      id-token: write
+      contents: read
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        
+      - id: 'auth'
+        name: 'Authenticate to Google Cloud'
+        uses: 'google-github-actions/auth@v1'
+        with:
+          token_format: 'access_token'
+          workload_identity_provider: projects/400645327499/locations/global/workloadIdentityPools/gitaction/providers/gitaction
+          service_account: 'serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com'
+          audience: 'https://github.com/qpqpqp1224/canary'      
+      
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1.1.1
+
+      - name: Use gcloud CLI
+        run: gcloud info
+        
+      - name: Install Google Cloud Auth plugin
+        run: gcloud components install gke-gcloud-auth-plugin
+      
+      - name: Get Kubernetes config
+        run: gcloud container clusters get-credentials canary-test --region asia-northeast3 --project trans-shuttle-401410
+
+      - name: register pipeline
+        run: gcloud deploy apply --file=clouddeploy.yaml --region=asia-northeast3 --project=trans-shuttle-401410
