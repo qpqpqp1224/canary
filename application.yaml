@@ -38,7 +38,7 @@ kind: Ingress
 metadata:
   name: test-ingress
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: test
+    kubernetes.io/ingress.global-static-ip-name: test-ip
 spec:
   rules:
     - http:
