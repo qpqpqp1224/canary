@@ -2,6 +2,7 @@ apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
   name: canary-test
+serviceAccount: serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
 description: main application pipeline
 serialPipeline:
   stages:
@@ -25,9 +26,3 @@ metadata:
 description: prod GKE cluster
 gke:
   cluster: projects/trans-shuttle-401410/locations/asia-northeast3/clusters/canary-test
-  nodePools:
-    - name: default-pool
-      nodeCount: 1
-      nodeConfig:
-        machineType: n1-standard-1
-        serviceAccount: serviceaccount-test@trans-shuttle-401410.iam.gserviceaccount.com
