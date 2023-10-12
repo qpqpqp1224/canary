@@ -37,4 +37,4 @@ jobs:
         run: gcloud container clusters get-credentials canary-test --region asia-northeast3 --project trans-shuttle-401410
 
       - name: register pipeline
-        run: gcloud deploy apply --file=clouddeploy.yaml --region=asia-northeast3 --project=trans-shuttle-401410
+        run: gcloud deploy apply -f deployment/clouddeploy.yaml --region=asia-northeast3 --project=trans-shuttle-401410
